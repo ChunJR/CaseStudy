@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.example.casestudy'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.casestudy"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.2.13"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    // Okhttp3
+    implementation "com.squareup.okhttp3:okhttp:4.10.0"
+    // jsoup HTML parser library @ https://jsoup.org/
+    implementation 'org.jsoup:jsoup:1.15.4'
+
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.mockito:mockito-core:5.1.1"
+    // Mock web server
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.9.0'
+    // Dependencies for local unit tests
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test.ext:junit:1.1.5"
+    testImplementation "org.json:json:20180813"
+}
