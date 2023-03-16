@@ -1,6 +1,6 @@
 package com.example.casestudy.ui.main;
 
-import com.example.casestudy.repository.Repository;
+import com.example.casestudy.repository.RepositoryImpl;
 import com.example.casestudy.util.StringUtils;
 
 import org.json.JSONArray;
@@ -23,7 +23,7 @@ public class MainViewModel extends ViewModel {
         return this._state;
     }
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private final Repository repository = new Repository();
+    private final RepositoryImpl repositoryImpl = new RepositoryImpl();
 
     @Override
     protected void onCleared() {
@@ -96,7 +96,7 @@ public class MainViewModel extends ViewModel {
     }
 
     private void continueToConvertWithLinks(ArrayList<String> links, JSONObject jsonObject) {
-        Disposable disposables = repository.getDataFromUrl(links, jsonObject)
+        Disposable disposables = repositoryImpl.getDataFromUrl(links, jsonObject)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> _state.setValue(new MainViewState.onSuccess(result.toString())));
